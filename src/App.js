@@ -1,23 +1,65 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Home from './Components/Home';
+import Semesters from './Components/Semesters';
+
+const results = {
+  "2022" : [
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing'  
+  ],
+  "2023" : [
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing'  
+  ],
+  "2024" : [
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing'  
+  ],
+  "2025" : [
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing',  
+    'https://drive.google.com/file/d/1SAu9zt9GLr0Ck5jKJE0_pu-7RgwsWus4/view?usp=sharing'  
+  ]
+
+}
 
 function App() {
+  const [ year , setYear ] = useState("")
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        (year === "")?(
+            <Home setYear = {setYear} year = {year}/>
+        ) : (
+          <Semesters year = {year} results={results}/>
+        )
+      }
+
+     
     </div>
   );
 }
